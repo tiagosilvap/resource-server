@@ -1,0 +1,8 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          introspection-uri: http://auth.algafood.local:8081/oauth/check_token
+          client-id: checktoken
+          client-secret: check123
