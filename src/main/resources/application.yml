@@ -1,3 +1,10 @@
 logging:
   level:
     org.springframework: DEBUG
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:keys/oauth2-public-key.pem
