@@ -8,3 +8,8 @@ spring:
       resourceserver:
         jwt:
           public-key-location: classpath:keys/oauth2-public-key.pem
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/algafood?useSSL=false&serverTimezone=UTC
+    username: root
+    password: admin

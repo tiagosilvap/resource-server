@@ -1,4 +1,4 @@
-package com.security.controller;
+package com.security.api;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
