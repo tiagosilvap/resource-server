@@ -2,7 +2,7 @@ package com.security.core;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,16 +14,12 @@ import java.util.stream.Collectors;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ResourceServerConfig {
     
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/v1/products/**").hasAuthority("GERENCIAR_PEDIDOS")
-                .antMatchers(HttpMethod.PUT, "/v1/products/**").hasAuthority("GERENCIAR_PEDIDOS")
-                .antMatchers(HttpMethod.GET, "/v1/products/**").authenticated()
-                .anyRequest().denyAll()
-                .and()
+        http.csrf().disable()
                 .cors().and()
                 .oauth2ResourceServer().jwt()
                 .jwtAuthenticationConverter(jwtAuthenticationConverter());
