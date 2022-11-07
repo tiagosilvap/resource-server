@@ -1,5 +1,6 @@
 package com.security.api;
 
+import com.security.core.SecurityScope;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,6 +22,8 @@ public class ProductController {
         return ResponseEntity.ok("Get product");
     }
     
+    @SecurityScope.Write
+    @SecurityScope.Read
     @PreAuthorize("hasAuthority('GERENCIAR_PEDIDOS')")
     @PostMapping
     public ResponseEntity<String> addProduct() {
@@ -33,6 +36,7 @@ public class ProductController {
         return ResponseEntity.ok("Update product");
     }
     
+    @SecurityScope.Read
     @PreAuthorize("isAuthenticated()")
     @DeleteMapping
     public ResponseEntity<String> deleteProduct() {
