@@ -1,5 +1,7 @@
 package com.security.api;
 
+import com.security.core.AppSecurity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,9 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/v1/products", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProductController {
     
+    @Autowired
+    private AppSecurity appSecurity;
+    
+    @PreAuthorize("@appSecurity.userDebora")
     @GetMapping
     public ResponseEntity<String> getProduct() {
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getAuthorities());
+        System.out.println(appSecurity.getAuthentication().getAuthorities());
         return ResponseEntity.ok("Get product");
     }
     
