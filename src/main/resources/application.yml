@@ -9,7 +9,10 @@ spring:
         jwt:
           public-key-location: classpath:keys/oauth2-public-key.pem
 
+  flyway:
+    locations: classpath:db/migration,classpath:db/testdata
+
   datasource:
-    url: jdbc:mysql://localhost:3306/algafood?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3307/database?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
     username: root
     password: admin
