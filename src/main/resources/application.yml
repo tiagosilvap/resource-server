@@ -13,6 +13,6 @@ spring:
     locations: classpath:db/migration,classpath:db/testdata
 
   datasource:
-    url: jdbc:mysql://localhost:3307/database?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
-    username: docker
+    url: jdbc:mysql://localhost:3307/resource_server?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+    username: root
     password: admin
